@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.100.24/orcl</property>
+        <property name="hibernate.connection.username">tarsim_pouria</property>
+        <property name="hibernate.connection.password">oracle</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+
+        <mapping class="com.example.cinema.user.data.UserTO" />
+        <mapping class="com.example.cinema.cinema.data.CinemaTO" />
+        <mapping class="com.example.cinema.hall.data.HallTO" />
+        <mapping class="com.example.cinema.film.data.FilmTO" />
+        <mapping class="com.example.cinema.permission.data.PermissionTO" />
+        <mapping class="com.example.cinema.role.data.RoleTO" />
+        <mapping class="com.example.cinema.screening.data.ScreeningTO" />
+        <mapping class="com.example.cinema.ticket.data.TicketTO" />
+        <mapping class="com.example.cinema.cinemaModerator.data.CinemaModeratorTO" />
+        <mapping class="com.example.cinema.chair.data.ChairTO" />
+        <mapping class="com.example.cinema.genre.data.GenreTO" />
+
+
+
+
+
+    </session-factory>
+</hibernate-configuration>
