@@ -1,19 +1,15 @@
 package com.example.cinema.hibernate;
 
 import com.example.cinema.baseFactory.BaseFactory;
-import com.fasterxml.classmate.AnnotationConfiguration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.common.annotationfactory.AnnotationFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
-
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 public class HibernateBaseFactory<T, S extends Number> implements BaseFactory<T, S> {
@@ -72,8 +68,21 @@ public class HibernateBaseFactory<T, S extends Number> implements BaseFactory<T,
         } finally {
             shutdown();
         }
-
     }
+
+
+    public void saveAll(List<T> list) {
+        try (Session session = getSession()) {
+            Transaction transaction = session.beginTransaction();
+            list.forEach(session::saveOrUpdate);
+            transaction.commit();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            shutdown();
+        }
+    }
+
 
     @Override
     public Boolean delete(T t) {
@@ -91,15 +100,13 @@ public class HibernateBaseFactory<T, S extends Number> implements BaseFactory<T,
 
     @Override
     public List<T> getAll() {
-        try (Session session = getSession()){
+        try (Session session = getSession()) {
             String hql = "select t from " + t.getName() + " t";
             Query<T> query = session.createQuery(hql, t);
             return query.getResultList();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             shutdown();
         }
 
@@ -107,14 +114,14 @@ public class HibernateBaseFactory<T, S extends Number> implements BaseFactory<T,
 
     @Override
     public T getById(S s) {
-        try (Session session = getSession()){
+        try (Session session = getSession()) {
             return session.get(t, s);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             shutdown();
         }
-
     }
+
+
 }

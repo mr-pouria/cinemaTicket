@@ -422,6 +422,7 @@
         .movie-actions {
             padding: 0 18px 18px;
             display: flex;
+            gap: 10px;
             justify-content: flex-end;
         }
 
@@ -434,7 +435,6 @@
             justify-content: center;
             border: none;
             cursor: pointer;
-            margin-right: 8px;
             transition: all 0.3s;
         }
 
@@ -599,12 +599,6 @@
             flex: 1;
         }
 
-        .hall-layout {
-            background-color: #f5f5f5;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
 
         .screen {
             background-color: #333;
@@ -616,42 +610,7 @@
             font-family: 'vazir-bold';
         }
 
-        .seats-container {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap: 12px;
-        }
 
-        .seat {
-            width: 30px;
-            height: 30px;
-            background-color: #ddd;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.8rem;
-        }
-
-        .seat.selected {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .seat.vip {
-            background-color: var(--light-blue);
-            color: white;
-        }
-
-        .seat.disabled {
-            background-color: #aaa;
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-
-        /* استایل‌های بهبود یافته برای مودال‌ها */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -947,6 +906,322 @@
                 width: 95%;
             }
         }
+
+
+        .hall-card {
+            background-color: var(--explicit-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .hall-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .hall-card-header {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--seperator-color);
+        }
+
+        .hall-card-header h3 {
+            margin: 0;
+            font-family: 'vazir-bold';
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        .hall-card-body {
+            padding: 20px;
+        }
+
+        .hall-info div {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .hall-info i {
+            margin-left: 8px;
+            color: var(--primary);
+            width: 18px;
+            text-align: center;
+        }
+
+        .hall-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-view-layout {
+            padding: 8px 15px;
+            border-radius: 6px;
+            background-color: var(--light-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'vazir-medium';
+            font-size: 0.85rem;
+            flex: 1;
+        }
+
+        .btn-view-layout:hover {
+            background-color: #2980b9;
+        }
+
+        .screen-area {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .screen-label {
+            font-family: 'vazir-bold';
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .screen {
+            height: 15px;
+            background: linear-gradient(to bottom, #555, #333);
+            border-radius: 4px;
+            margin: 0 auto;
+            width: 80%;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .screen:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20%;
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 50%;
+        }
+
+        .seat {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            font-family: 'vazir-medium';
+            position: relative;
+            user-select: none;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+            margin: 5px auto;
+            color: #555;
+            border: 2px solid #ddd;
+        }
+
+        .seat:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .seat:active {
+            transform: scale(0.95);
+        }
+
+        .seat.selected {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border-color: #2E7D32;
+        }
+
+        .seat.disabled {
+            background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
+            color: #999;
+            border-color: #bdbdbd;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+
+        .seat-number {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #777;
+            font-family: 'vazir-medium';
+        }
+
+        .row-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #555;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'vazir-bold';
+            margin-right: 10px;
+        }
+
+        .seat-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .layout-legend {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #555;
+            background: #f5f5f5;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-color.available {
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+        }
+
+        .legend-color.selected {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+
+        .legend-color.disabled {
+            background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
+        }
+
+
+        .seats-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes seatPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .seat.selected {
+            animation: seatPulse 1s ease infinite;
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hall-card {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        #backToHallsList {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'vazir-medium';
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+        }
+
+        #backToHallsList:hover {
+            background-color: #5a6268;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #saveLayoutBtn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'vazir-medium';
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+        }
+
+        #saveLayoutBtn:hover {
+            background-color: #c19b2d;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .layout-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
     </style>
 </head>
 <body>
@@ -1285,99 +1560,90 @@
 
             <div id="halls" class="tab-content">
                 <div class="section-container">
-                    <div class="section-header">
-                        <h2>مدیریت سالن‌ها</h2>
-                        <button class="btn-primary" id="addHallBtn"><i class="fas fa-plus"></i> افزودن سالن جدید
-                        </button>
-                    </div>
 
-                    <div class="tab-container">
-                        <div class="tab-buttons">
-                            <button class="tab-btn active">همه سالن‌ها</button>
-                            <button class="tab-btn">فعال</button>
-                            <button class="tab-btn">غیرفعال</button>
+                    <div class="halls-header">
+                        <div class="section-header">
+                            <h2>مدیریت سالن‌ها</h2>
+                            <button class="btn-primary" id="addHallBtn"><i class="fas fa-plus"></i> افزودن سالن جدید
+                            </button>
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">جستجوی سالن</label>
-                            <input type="text" class="form-control" placeholder="نام سالن را وارد کنید...">
-                        </div>
+                    <div class="halls-grid"
+                         style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                        <c:forEach items="${halls}" var="hall">
+                            <div class="hall-card">
+                                <div class="hall-card-header">
+                                    <h3>${hall.getHallName()}</h3>
+                                </div>
+                                <div class="hall-card-body">
+                                    <div class="hall-info">
+                                        <div><i class="fas fa-chair"></i> ظرفیت:
+                                            <strong>${hall.getEachRow() * hall.getMaxRow()} صندلی</strong></div>
+                                        <div><i class="fas fa-border-all"></i> چیدمان: <strong>${hall.getMaxRow()} ردیف
+                                            × ${hall.getEachRow()} صندلی</strong></div>
+                                    </div>
+                                    <div class="hall-actions">
+                                        <button class="btn-delete" onclick="deleteHall(${hall.getHallId()})"><i
+                                                class="fas fa-trash"></i></button>
+                                        <button class="btn-edit" onclick="editHall({
+                                                hallId : '${hall.getHallId()}',
+                                                hallName: '${hall.getHallName()}',
+                                                hallDescription: '${hall.getDescription()}',
+                                                eachRow:'${hall.getEachRow()}',
+                                                maxRow:'${hall.getMaxRow()}'
+                                                })"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-view-layout"
+                                                onclick="viewHallLayout(${hall.getHallId()} , ${hall.getEachRow()} , ${hall.getMaxRow()})">
+                                            <i class="fas fa-th-large"></i> مدیریت صندلی‌ها
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
 
-                    <div class="hall-layout">
-                        <div class="screen">صفحه نمایش</div>
-                        <div class="seats-container">
-                            <div class="seat">1</div>
-                            <div class="seat">2</div>
-                            <div class="seat">3</div>
-                            <div class="seat">4</div>
-                            <div class="seat">5</div>
-                            <div class="seat">6</div>
-                            <div class="seat">7</div>
-                            <div class="seat">8</div>
-                            <div class="seat">9</div>
-                            <div class="seat">10</div>
-                            <div class="seat vip">11</div>
-                            <div class="seat vip">12</div>
-                            <div class="seat vip">13</div>
-                            <div class="seat vip">14</div>
-                            <div class="seat vip">15</div>
-                            <div class="seat vip">16</div>
-                            <div class="seat vip">17</div>
-                            <div class="seat vip">18</div>
-                            <div class="seat vip">19</div>
-                            <div class="seat vip">20</div>
-                            <div class="seat">21</div>
-                            <div class="seat">22</div>
-                            <div class="seat">23</div>
-                            <div class="seat">24</div>
-                            <div class="seat">25</div>
-                            <div class="seat">26</div>
-                            <div class="seat">27</div>
-                            <div class="seat">28</div>
-                            <div class="seat">29</div>
-                            <div class="seat">30</div>
-                            <div class="seat">31</div>
-                            <div class="seat">32</div>
-                            <div class="seat">33</div>
-                            <div class="seat">34</div>
-                            <div class="seat">35</div>
-                            <div class="seat">36</div>
-                            <div class="seat">37</div>
-                            <div class="seat">38</div>
-                            <div class="seat">39</div>
-                            <div class="seat">40</div>
-                            <div class="seat disabled">41</div>
-                            <div class="seat disabled">42</div>
-                            <div class="seat disabled">43</div>
-                            <div class="seat disabled">44</div>
-                            <div class="seat disabled">45</div>
-                            <div class="seat disabled">46</div>
-                            <div class="seat disabled">47</div>
-                            <div class="seat disabled">48</div>
-                            <div class="seat disabled">49</div>
-                            <div class="seat disabled">50</div>
-                        </div>
-                    </div>
 
-                    <div class="legend" style="margin-top: 20px; display: flex; gap: 20px;">
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 20px; height: 20px; background-color: #ddd; border-radius: 4px; margin-left: 8px;"></div>
-                            <span>صندلی معمولی</span>
+                    <div class="hall-layout-container" id="hallLayoutContainer" style="display: none;">
+                        <div class="section-header" style="padding: 0; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                <h2 id="currentHallTitle">مدیریت صندلی‌های سالن ۱</h2>
+                                <div style="display: flex; gap: 10px;">
+                                    <button class="btn-secondary" id="backToHallsList"
+                                            style="padding: 10px 15px; display: flex; align-items: center;">
+                                        <i class="fas fa-arrow-right" style="margin-left: 8px;"></i> بازگشت به لیست
+                                    </button>
+                                    <button class="btn-primary" id="saveLayoutBtn"
+                                            style="padding: 10px 15px; display: flex; align-items: center;">
+                                        <i class="fas fa-save" style="margin-left: 8px;"></i> ذخیره تغییرات
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 20px; height: 20px; background-color: var(--light-blue); border-radius: 4px; margin-left: 8px;"></div>
-                            <span>صندلی VIP</span>
+
+                        <div class="hall-layout-preview">
+                            <div class="screen-area">
+                                <div class="screen-label">صفحه نمایش</div>
+                                <div class="screen"></div>
+                            </div>
+
+                            <div class="seats-grid" id="seatsGrid"></div>
                         </div>
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 20px; height: 20px; background-color: #aaa; border-radius: 4px; margin-left: 8px; opacity: 0.5;"></div>
-                            <span>غیرفعال</span>
+
+                        <div class="layout-legend">
+                            <div class="legend-item">
+                                <div class="legend-color available"></div>
+                                <span>صندلی فعال</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color disabled"></div>
+                                <span>غیرفعال</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <div id="tickets" class="tab-content">
                 <div class="section-container">
@@ -1623,7 +1889,7 @@
     </main>
 </div>
 
-<!-- مودال‌ها با بهبودهای اعمال شده -->
+
 <div class="modal-overlay" id="addMovieModal">
     <div class="modal">
         <div class="modal-header">
@@ -1722,41 +1988,43 @@
         </div>
     </div>
 </div>
-
 <div class="modal-overlay" id="addHallModal">
-    <div class="modal">
+    <div class="modal" style="max-width: 600px;">
         <div class="modal-header">
-            <h3>افزودن سالن جدید</h3>
+            <h3 id="hallModalTitle">افزودن سالن جدید</h3>
             <button class="modal-close">&times;</button>
         </div>
-        <div class="modal-body">
+        <form class="modal-body" id="hallForm" enctype="multipart/form-data">
             <div class="form-group">
-                <label class="form-label">نام سالن</label>
-                <input type="text" class="form-control" placeholder="نام سالن را وارد کنید" required>
+                <label class="form-label" for="hallName">نام سالن</label>
+                <input type="text" class="form-control" name="hallName" id="hallName" placeholder="مثال: سالن ۱"
+                       required>
             </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" for="maxRow">تعداد ردیف</label>
+                    <input type="number" class="form-control" id="maxRow" name="maxRow" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="eachRow">تعداد صندلی در هر ردیف</label>
+                    <input type="number" class="form-control" id="eachRow" name="eachRow" required>
+                </div>
+            </div>
+
             <div class="form-group">
-                <label class="form-label">تعداد صندلی‌ها</label>
-                <input type="number" class="form-control" placeholder="تعداد صندلی‌های سالن" required>
+                <label class="form-label" for="hallDescription">توضیحات (اختیاری)</label>
+                <textarea class="form-control" id="hallDescription" name="hallDescription" rows="3"
+                          placeholder="توضیحات درباره سالن..."></textarea>
             </div>
-            <div class="form-group">
-                <label class="form-label">توضیحات</label>
-                <textarea class="form-control" rows="3" placeholder="توضیحات سالن"></textarea>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close" type="button">انصراف</button>
+                <button class="btn btn-primary" type="button" id="saveHallBtn" onclick="newHall()">ذخیره سالن</button>
             </div>
-            <div class="form-group">
-                <label class="form-label">وضعیت</label>
-                <select class="form-control" required>
-                    <option value="active">فعال</option>
-                    <option value="inactive">غیرفعال</option>
-                    <option value="maintenance">در حال تعمیر</option>
-                </select>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary modal-close">انصراف</button>
-            <button class="btn btn-primary">ذخیره سالن</button>
-        </div>
+        </form>
     </div>
 </div>
+
 
 <div class="modal-overlay" id="addAdminModal">
     <div class="modal">
@@ -1811,27 +2079,27 @@
 <script>
 
     let filmTmp = null
+    let hallTmp = null
 
 
-    function detectPageFromURL() {
+    const detectPageFromURL = () => {
         const path = window.location.pathname;
 
-        // اگر آدرس /admin یا /admin/ بود
+
         if (path === '/admin' || path === '/admin/') {
             return 'dashboard';
         }
 
-        // اگر آدرس /admin/چیزی بود
         const parts = path.split('/');
         if (parts[1] === 'admin' && parts[2]) {
-            return parts[2]; // قسمت بعد از /admin/
+            return parts[2];
         }
 
-        // حالت پیشفرض
+
         return 'dashboard';
     }
 
-    function showPage(pageId) {
+    const showPage = (pageId) => {
         document.querySelectorAll('.tab-content').forEach(page => {
             page.style.display = 'none';
         });
@@ -1840,11 +2108,11 @@
         if (requestedPage) {
             requestedPage.style.display = 'block';
         } else {
-            // اگر صفحه وجود نداشت، پیشفرض را نمایش بده
+
             document.getElementById('dashboard').style.display = 'block';
         }
 
-        // فعال کردن لینک منوی مربوطه
+
         document.querySelectorAll('.admin-nav li').forEach(item => {
             item.classList.remove('active');
         });
@@ -1895,6 +2163,7 @@
         if (openBtn && modal) {
             openBtn.addEventListener('click', () => {
                 filmTmp = null
+                hallTmp = null
                 fillInputs(document.getElementById("filmForm"), null)
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -1966,6 +2235,135 @@
 
 
         fetch("/admin/films/insert", {
+            method: "POST",
+            body: formData
+        })
+            .then((res) => {
+                if (res.redirected) {
+                    window.location.href = res.url
+                }
+            })
+    }
+
+
+    document.querySelectorAll('.tab-buttons .tab-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.tab-buttons .tab-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const filter = this.dataset.filter;
+            document.querySelectorAll('.hall-card').forEach(card => {
+                if (filter === 'all' || card.dataset.status === filter || card.dataset.type === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+
+    const viewHallLayout = (hallId, seatsPerRow, rows) => {
+
+        document.querySelector('.halls-header').style.display = 'none';
+        document.querySelector('.halls-grid').style.display = 'none';
+        document.getElementById('hallLayoutContainer').style.display = 'block';
+        document.getElementById('currentHallTitle').textContent = `مدیریت صندلی‌های سالن ${hallId}`;
+
+        const seatsGrid = document.getElementById('seatsGrid');
+        seatsGrid.innerHTML = '';
+
+        for (let row = 1; row <= rows; row++) {
+            const rowContainer = document.createElement('div');
+            rowContainer.className = 'seat-row';
+
+            const rowNumber = document.createElement('div');
+            rowNumber.className = 'row-number';
+            rowNumber.textContent = row;
+            rowContainer.appendChild(rowNumber);
+
+            for (let seatNum = 1; seatNum <= seatsPerRow; seatNum++) {
+                const seat = document.createElement('div');
+                seat.className = 'seat';
+                seat.dataset.row = row;
+                seat.dataset.seat = seatNum;
+                seat.dataset.hallId = hallId;
+
+                const seatNumber = document.createElement('div');
+                seatNumber.className = 'seat-number';
+                seatNumber.textContent = seatNum;
+
+                seat.innerHTML = `<i class="fas fa-chair"></i>`;
+                seat.appendChild(seatNumber);
+
+                seat.addEventListener('click', function () {
+                    this.classList.toggle('disabled');
+                });
+
+                rowContainer.appendChild(seat);
+            }
+            seatsGrid.appendChild(rowContainer);
+        }
+    };
+
+    document.getElementById('backToHallsList').addEventListener('click', function () {
+        // نمایش دوباره هدر و دکمه افزودن سالن
+        document.querySelector('.halls-header').style.display = 'block';
+        document.querySelector('.halls-grid').style.display = 'grid';
+        document.getElementById('hallLayoutContainer').style.display = 'none';
+    });
+    document.getElementById('backToHallsList').addEventListener('click', function () {
+        document.querySelector('.halls-grid').style.display = 'grid';
+        document.getElementById('hallLayoutContainer').style.display = 'none';
+    });
+
+
+    document.getElementById('saveLayoutBtn').addEventListener('click', function () {
+        alert('تغییرات صندلی‌ها با موفقیت ذخیره شد.');
+    });
+
+
+    const editHall = (hall) => {
+        hallTmp = hall
+        document.body.style.overflow = 'hidden';
+        modals.addHallModal.modal.classList.add("active")
+        fillInputs(document.getElementById("hallForm"), hall)
+    }
+
+    const newHall = () => {
+        const formData = new FormData(document.getElementById("hallForm"))
+        if (hallTmp !== null) {
+            formData.append("hallId", hallTmp.hallId)
+        }
+        const chairs = []
+        for (let i = 1; i <= parseInt(formData.get("maxRow")); i++) {
+            for (let j = 1; j <= parseInt(formData.get("eachRow")); j++) {
+                chairs.push({
+                    chairId: null,
+                    chairNumber: j,
+                    rowNumber: i,
+                })
+            }
+        }
+        chairs.forEach((chair, index) => {
+            formData.append("chairs[" + index + "][chairNumber]", chair.chairNumber);
+            formData.append("chairs[" + index + "][rowNumber]", chair.rowNumber);
+        });
+
+        fetch("/admin/halls/insert", {
+            method: "POST",
+            body: formData
+        })
+            .then((res) => {
+                if (res.redirected) {
+                }
+            })
+    }
+
+    const deleteHall = (id) => {
+        const formData = new FormData()
+        formData.append("hallId", id)
+        fetch("/admin/halls/delete", {
             method: "POST",
             body: formData
         })

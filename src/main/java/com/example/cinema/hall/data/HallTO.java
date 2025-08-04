@@ -24,7 +24,7 @@ public class HallTO extends BaseEntity {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cinema_id", nullable = false)
+    @JoinColumn(name = "cinema_id")
     private CinemaTO cinema;
 
 
@@ -36,7 +36,17 @@ public class HallTO extends BaseEntity {
     private List<ScreeningTO> screening = new ArrayList<>();
 
 
-    private Integer capacity = 100;
+    private Short maxRow;
+    private Short eachRow;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Long getHallId() {
         return hallId;
@@ -54,12 +64,20 @@ public class HallTO extends BaseEntity {
         this.hallName = hallName;
     }
 
-    public Integer getCapacity() {
-        return capacity;
+    public Short getMaxRow() {
+        return maxRow;
     }
 
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
+    public void setMaxRow(Short maxRow) {
+        this.maxRow = maxRow;
+    }
+
+    public Short getEachRow() {
+        return eachRow;
+    }
+
+    public void setEachRow(Short eachRow) {
+        this.eachRow = eachRow;
     }
 
     public CinemaTO getCinema() {

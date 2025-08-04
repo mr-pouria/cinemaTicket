@@ -27,4 +27,9 @@ public class FilmRequestMapper implements RequestMapper {
         }
         return filmDTO;
     }
+
+    @Override
+    public BaseDTO map(Map<String, String[]> params) {
+        return null;
+    }
 }

@@ -9,4 +9,5 @@ import java.util.Map;
 
 public interface RequestMapper {
     BaseDTO map(Map<String , String[]> params , Part part) throws IOException;
+    BaseDTO map(Map<String , String[]> params);
 }

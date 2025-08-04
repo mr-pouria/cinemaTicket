@@ -37,12 +37,7 @@ public class FilmController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        String path = req.getServletPath();
-        switch (path) {
-            case "/admin/films":
-                req.setAttribute("films", filmBiz.getAll());
-                break;
-        }
+        req.setAttribute("films", filmBiz.getAll());
         req.getRequestDispatcher("/admin.jsp").forward(req, res);
     }
 

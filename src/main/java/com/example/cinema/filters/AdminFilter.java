@@ -40,10 +40,10 @@ public class AdminFilter implements Filter {
         for (Map<String, Object> stringObjectMap : listOfPermission) {
             if (req.getRequestURI().contains(stringObjectMap.get("path").toString())) {
                 if (((UserTO)req.getSession().getAttribute("user")).getPermission() == null) {
-                    throw new RemoteException("UnAuthorized exception! 403");
+                    throw new RuntimeException("UnAuthorized exception! 403");
                 }
                 else if (!stringObjectMap.get("permission").equals(((UserTO) req.getSession().getAttribute("user")).getPermission().getPermission())) {
-                    throw new RemoteException("UnAuthorized exception! 403");
+                    throw new RuntimeException("UnAuthorized exception! 403");
                 }
             }
         }
